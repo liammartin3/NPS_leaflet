@@ -6,7 +6,14 @@
 integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
 crossorigin=""/>
 <style>
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {color:#000000 ;background-color: #ffffff;}
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {color:#fcfafa ;background-color: #040404;}
+#map {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
 </style>
 
 <!-- reference to Leaflet JavaScript -->
@@ -16,6 +23,7 @@ crossorigin=""></script>
 
 <!-- L.esri plugin JavaScript -->
 <script src="https://unpkg.com/esri-leaflet@3.0.10/dist/esri-leaflet.js"></script>
+<script src="js/leaflet-providers.js"></script>
 
 </head>
 
@@ -29,10 +37,15 @@ const apiKey = "AAPKeafa6288204d4f088bcda05c7fe81547f9pg25vAoP6EX9D7syKC-LzSbA7c
 var map = L.map('map').setView([39.099724, -96.578331], 4);
 
 //Tile Layer
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
-        }).addTo(map);
+//L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+//        subdomains: 'abcd',
+//        maxZoom: 19
+//        }).addTo(map);
+
+L.tileLayer.provider('MapBox', {
+    id: "mapbox/light-v10",
+    accessToken: 'pk.eyJ1IjoibGlhbW1hcnRpbiIsImEiOiJjbG4zcjdiZDUwY3FtMmpvZ2lzeDF3c3d0In0.eFVJQFhn-mb1TUbEG6ZNTg'
+}).addTo(map);
 
 var myStyle = {
     "color": "#2e8b57"
